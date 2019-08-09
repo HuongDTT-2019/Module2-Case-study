@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Type</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+</head>
+<body>
+<div id="wrapper">
+<h1>Create Type</h1>
+<p>
+    <a th:href="@{/type}"> List type</a>
+    <span>||</span>
+    <a th:href="@{/}"> Back to list note</a>
+</p>
+    <hr>
+
+<form th:action="create-type" th:object="${type}" method="post">
+    <th:block th:if="${message}">
+        <span th:text="${message}"></span>
+    </th:block>
+    <br>
+    <label>Type:</label><br>
+    <input type="text" placeholder="Enter the name of type" th:field="*{name}"><br>
+    <label>Description:</label><br>
+    <input type="text" placeholder="Enter the description of type" th:field="*{description}"><br>
+    <input type="submit" value="Save">
+</form>
+</div>
+</body>
+</html>

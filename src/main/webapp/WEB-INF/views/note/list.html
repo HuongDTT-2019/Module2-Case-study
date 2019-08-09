@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Note</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+</head>
+<body>
+<div id="wrapper">
+<h1>List Note</h1>
+<p>
+    <a th:href="@{/create-note}">Create new note</a>
+</p>
+    <hr>
+<br>
+<form th:action="@{/search-note}"  method="get">
+    <lable>Search note for type</lable><br>
+    <label>Type:</label>
+    <select name="typeNote">
+        <option th:each="t : ${typeNote}"
+                th:value="${t.id}"
+                th:text="${t.name}"
+        ></option>
+    </select>
+    <input type="submit" value="Search">
+    <button><a th:href="@{/create-type}">Create Type</a></button>
+</form>
+<br>
+<table id="list-note">
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th></th>
+    </tr>
+    <th:block th:each="note :${notes}">
+        <tr>
+            <td th:text="${note.id}"></td>
+            <td th:text="${note.typeNote.name}"></td>
+            <td th:text="${note.title}"></td>
+            <td th:text="${note.content}"></td>
+            <td>
+                <a th:href="@{/view-note/__${note.id}__}">View</a>
+                <a th:href="@{/edit-note/__${note.id}__}">Edit</a>
+                <a th:href="@{/delete-note/__${note.id}__}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<div id="page">
+    <a th:href="@{'/note'(page=${notes.number - 1})}" th:if="${notes.hasPrevious()}">Previous</a>
+    <span th:text="${notes.number + 1}"></span>/<span th:text="${notes.totalPages}"></span>
+    <a th:href="@{'/employee'(page=${notes.number + 1})}" th:if="${notes.hasNext()}">Next</a>
+</div>
+</div>
+</body>
+</html>

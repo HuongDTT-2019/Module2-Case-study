@@ -1,0 +1,82 @@
+#wrapper{
+    width: 960px;
+    background: bisque;
+    font-family: 'Slabo 27px', serif;
+    min-height: 500px;
+    margin-left: 200px;
+}
+h1{
+    color: brown;
+    text-align: center;
+}
+p{    text-align: center;
+background: darkorange}
+a{
+    color: blue;
+    text-decoration: none;
+}
+a:hover{
+    color: black;
+}
+form{
+    border: brown 2px dotted;
+    margin-left: 300px;
+    width: 300px;
+    padding: 20px 50px;
+    background: bisque;
+}
+select{
+    padding: 10px 10px;
+    border: brown 1px solid;
+    border-radius: 3px;
+    background: bisque;
+    margin-bottom: 10px;
+}
+input[type=text]{
+    padding: 10px 10px;
+    background: bisque ;
+    margin-bottom: 10px;
+    border: brown 1px solid;
+    border-radius: 3px;
+}
+input[type=submit]{
+    padding: 10px 20px;
+    border: brown 1px solid;
+    border-radius: 3px;
+    background: bisque;
+}
+input[type=submit]:hover{
+    background: azure;
+}
+#list-note{
+    text-align: center;
+    padding-left: 80px;
+}
+#list-type{
+    padding-left: 300px;
+}
+#page{
+    text-align: center;
+}
+textarea{
+    border: brown 1px solid;
+    border-radius: 3px;
+}
+button{
+    padding: 10px;
+    border: 1px solid brown;
+    border-radius: 3px;
+    margin-left: 50px;
+}
+#list-note tr>th,#list-type tr>th{
+    background: darkorange;
+}
+#list-note tr,#list-type tr{
+    padding: 10px 0;
+}
+#list-note tr:nth-child(even),#list-type tr:nth-child(even){
+    background:azure;
+}
+#list-note tr:hover,#list-type tr:hover{
+    background: darkorange;
+}
