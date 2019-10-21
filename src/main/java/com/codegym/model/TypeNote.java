@@ -1,5 +1,8 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.domain.Page;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +15,7 @@ public class TypeNote {
     private String name;
     private String description;
     @OneToMany(targetEntity = TypeNote.class)
+    @JsonIgnore
     private List<Note> notes;
 
     @Override

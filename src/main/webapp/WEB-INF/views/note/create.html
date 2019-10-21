@@ -23,9 +23,11 @@
         </option>
     </select><br>
     <label>Title</label><br>
-    <input type="text" th:field="*{title}"><br>
+    <input type="text" th:field="*{title}"><p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name Error</p><br>
     <label>Content</label><br>
-    <textarea cols="30" rows="10" th:field="*{content}"></textarea><br>
+    <textarea cols="30" rows="10" th:field="*{content}"></textarea>
+    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Name Error</p>
+    <br>
     <input type="submit" value="Save">
 </form>
 </div>

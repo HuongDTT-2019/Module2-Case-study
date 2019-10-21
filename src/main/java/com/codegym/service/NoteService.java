@@ -11,4 +11,5 @@ public interface NoteService {
     Page<Note> findAll(Pageable pageable);
     Note findById(Long id);
     Page<Note> findAllByTypeNote(TypeNote typeNote, Pageable pageable);
+    Page<Note> findNoteByTitle(String title,Pageable pageable);
 }

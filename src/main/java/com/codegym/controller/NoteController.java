@@ -10,10 +10,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+//@Controller
 public class NoteController {
     @Autowired
     private NoteService noteService;
@@ -33,7 +35,11 @@ public class NoteController {
     }
 
     @PostMapping("/create-note")
-    public ModelAndView createNote(@ModelAttribute("note") Note note) {
+    public ModelAndView createNote(@Validated @ModelAttribute("note") Note note, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            ModelAndView modelAndView = new ModelAndView("/note/create");
+            return modelAndView;
+        }
         noteService.save(note);
         ModelAndView modelAndView = new ModelAndView("/note/create");
         modelAndView.addObject("note", new Note());
@@ -108,6 +114,13 @@ public class NoteController {
         modelAndView.addObject("note", notes);
         return modelAndView;
 
+    }
+    @RequestMapping("/search-note-title")
+    public ModelAndView searchFormTitle(@RequestParam("title") String title, Pageable pageable){
+        Page<Note> notes = noteService.findNoteByTitle(title,pageable);
+        ModelAndView modelAndView = new ModelAndView("/note/search-title");
+        modelAndView.addObject("note",notes);
+        return modelAndView;
     }
 
 }

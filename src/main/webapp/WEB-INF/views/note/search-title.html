@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search-Title</title>
+</head>
+<body>
+<table id="list-note">
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th></th>
+    </tr>
+    <th:block th:each="notes:${note}">
+        <tr>
+            <td th:text="${notes.id}"></td>
+            <td th:text="${notes.typeNote.name}"></td>
+            <td th:text="${notes.title}"></td>
+            <td th:text="${notes.content}"></td>
+            <td>
+                <a th:href="@{/view-note/__${notes.id}__}">View</a>
+                <a th:href="@{/edit-note/__${notes.id}__}">Edit</a>
+                <a th:href="@{/delete-note/__${notes.id}__}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<div id="page">
+    <a th:href="@{'/note'(page=${note.number - 1})}" th:if="${note.hasPrevious()}">Previous</a>
+    <span th:text="${note.number + 1}"></span>/<span th:text="${note.totalPages}"></span>
+    <a th:href="@{'/note'(page=${note.number + 1})}" th:if="${note.hasNext()}">Next</a>
+</div>
+</div>
+</body>
+</html>

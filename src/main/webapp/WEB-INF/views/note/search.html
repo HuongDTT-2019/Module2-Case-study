@@ -12,6 +12,12 @@
     <a th:href="@{/}">Back to list</a>
 </p>
     <hr>
+    <form th:action="@{/search-note-title}" method="get">
+        <lable>Search note for title</lable><br>
+        <input type="text" placeholder="input the title">
+        <input type="submit" value="Search">
+    </form>
+    <br>
 <table id="list-note">
     <tr>
         <th>ID</th>
